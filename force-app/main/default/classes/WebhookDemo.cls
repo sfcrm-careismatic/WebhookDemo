@@ -19,14 +19,20 @@ global with sharing class WebhookDemo {
 
             JSONParser parser = JSON.createParser(request.requestBody.toString());
             pusher ps;
+            repo rp;
             while (parser.nextToken() != null){
                 System.debug(parser.getText());
                 if(parser.getText() == 'pusher'){
-                    ps = (pusher)parser.readValueAs(pusher.class);
                     parser.nextToken();
+                    ps = (pusher)parser.readValueAs(pusher.class);
                     System.debug(ps);
                 }
 
+                if(parser.getText() == 'repository'){
+                    parser.nextToken();
+                    rp = (repo)parser.readValueAs(repo.class);
+                    System.debug(rp);
+                }
 
                 // Github_Config__c objGitHub = new Github_Config__c();
                 // objGitHub.Git_Url__c = 
@@ -46,4 +52,12 @@ global with sharing class WebhookDemo {
         }
     }
 
+    public class repo{
+        public String full_name;
+        public String id;
+        public repo(String full_name, String id){
+            full_name = full_name;
+            id = id;
+        }
+    }
 }
