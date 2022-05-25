@@ -21,7 +21,7 @@ global with sharing class WebhookDemo {
             pusher ps;
             repo rp;
             while (parser.nextToken() != null){
-
+                System.debug(parser.getText());
                 if(parser.getText() == 'pusher'){
                     ps = (pusher)parser.readValueAs(pusher.class);
                     System.debug(ps);
