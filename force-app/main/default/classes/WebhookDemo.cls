@@ -6,10 +6,9 @@ global with sharing class WebhookDemo {
             RestRequest request = RestContext.request;
             RestResponse response = RestContext.response;
             
+            system.debug('###'+request);
             system.debug('###'+request.requestBody.toString());
-            system.debug('###'+response);
-            
-
+            system.debug('###'+response);        
 
 
             Account objAccount = new Account();
