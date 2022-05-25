@@ -22,13 +22,13 @@ global with sharing class WebhookDemo {
             repo rp;
             while (parser.nextToken() != null){
 
-                if(parser.nextToken() == 'pusher'){
+                if(parser.getText() == 'pusher'){
                     ps = (pusher)parser.readValueAs(pusher.class);
                     System.debug(ps);
                 }
 
-                if(parser.nextToken() == 'repository'){
-                    rp = (pusher)parser.readValueAs(repo.class);
+                if(parser.getText() == 'repository'){
+                    rp = (repo)parser.readValueAs(repo.class);
                     System.debug(rp);
                 }
 
@@ -53,7 +53,7 @@ global with sharing class WebhookDemo {
     public class repo{
         public String name;
         public String gitId;
-        public pusher(String name, String gitId){
+        public repo(String name, String gitId){
             name = name;
             gitId = gitId;
         }
