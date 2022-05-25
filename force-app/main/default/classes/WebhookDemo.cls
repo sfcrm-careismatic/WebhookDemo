@@ -51,11 +51,11 @@ global with sharing class WebhookDemo {
     }
 
     public class repo{
-        public String name;
-        public String gitId;
-        public repo(String name, String gitId){
-            name = name;
-            gitId = gitId;
+        public String full_name;
+        public String id;
+        public repo(String full_name, String id){
+            full_name = full_name;
+            id = id;
         }
     }
 }
