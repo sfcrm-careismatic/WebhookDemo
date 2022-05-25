@@ -23,6 +23,7 @@ global with sharing class WebhookDemo {
                 System.debug(parser.getText());
                 if(parser.getText() == 'pusher'){
                     ps = (pusher)parser.readValueAs(pusher.class);
+                    parser.nextToken();
                     System.debug(ps);
                 }
 
