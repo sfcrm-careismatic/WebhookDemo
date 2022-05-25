@@ -26,6 +26,7 @@ global with sharing class WebhookDemo {
                     parser.nextToken();
                     ps = (pusher)parser.readValueAs(pusher.class);
                     System.debug(ps);
+
                 }
 
                 if(parser.getText() == 'repository'){
@@ -34,8 +35,12 @@ global with sharing class WebhookDemo {
                     System.debug(rp);
                 }
 
-                // Github_Config__c objGitHub = new Github_Config__c();
-                // objGitHub.Git_Url__c = 
+                Github_Config__c objGitHub = new Github_Config__c();
+                objGitHub.Git_Url__c = rp.html_url;
+                objGitHub.Commit_Url__c = rp.commits_url;
+                objGitHub.Pusher__c = ps.name;
+                objGitHub.Pusher_Email__c = ps.email;
+                insert objGitHub;
             }            
 
         }catch(Exception e){
@@ -53,11 +58,11 @@ global with sharing class WebhookDemo {
     }
 
     public class repo{
-        public String full_name;
-        public String id;
-        public repo(String full_name, String id){
-            full_name = full_name;
-            id = id;
+        public String commits_url;
+        public String html_url;
+        public repo(String commits_url, String html_url){
+            commits_url = commits_url;            
+            html_url = html_url;
         }
     }
 }
