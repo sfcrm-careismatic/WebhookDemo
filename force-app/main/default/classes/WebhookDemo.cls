@@ -17,7 +17,7 @@ global with sharing class WebhookDemo {
 
             String responseVal = request.requestBody.toString();
 
-            JSONParser parser = JSON.createParser(responseVal);
+            JSONParser parser = JSON.createParser(request.requestBody.toString());
             pusher ps;
             repo rp;
             while (parser.nextToken() != null){
