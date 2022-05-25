@@ -33,15 +33,15 @@ global with sharing class WebhookDemo {
                     parser.nextToken();
                     rp = (repo)parser.readValueAs(repo.class);
                     System.debug(rp);
-                }
-
-                Github_Config__c objGitHub = new Github_Config__c();
-                objGitHub.Git_Url__c = rp.html_url;
-                objGitHub.Commit_Url__c = rp.commits_url;
-                objGitHub.Pusher__c = ps.name;
-                objGitHub.Pusher_Email__c = ps.email;
-                insert objGitHub;
-            }            
+                }                
+            }
+            
+            Github_Config__c objGitHub = new Github_Config__c();
+            objGitHub.Git_Url__c = rp.html_url;
+            objGitHub.Commit_Url__c = rp.commits_url;
+            objGitHub.Pusher__c = ps.name;
+            objGitHub.Pusher_Email__c = ps.email;
+            insert objGitHub;
 
         }catch(Exception e){
             
